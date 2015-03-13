@@ -14,3 +14,5 @@ alias bup="brew update && brew upgrade"
 
 # easy moving
 alias ..="cd .."
+
+# add in mysql fix for wordpress and mamp at some point
