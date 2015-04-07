@@ -15,4 +15,5 @@ alias bup="brew update && brew upgrade"
 # easy moving
 alias ..="cd .."
 
-# add in mysql fix for wordpress and mamp at some point
+# mysql fix for mamp and wordpress
+alias fix_mysql="ln -s /Applications/MAMP/tmp/mysql/mysql.sock /tmp/mysql.sock"
