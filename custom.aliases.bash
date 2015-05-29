@@ -17,3 +17,12 @@ alias ..="cd .."
 
 # mysql fix for mamp and wordpress
 alias fix_mysql="ln -s /Applications/MAMP/tmp/mysql/mysql.sock /tmp/mysql.sock"
+
+# alias for deleting
+alias rm="rm -i"
+
+# Alias for Foreman
+alias fs='foreman start'
+
+#Alias for Mallet
+alias mal='./bin/mallet'
