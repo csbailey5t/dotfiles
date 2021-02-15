@@ -67,3 +67,9 @@
 
 ;; install julia lsp
 ;; (package! eglot-jl)
+
+;; Add ripgrep for use with projectile
+(package! ripgrep)
+
+;; add vue mode
+(package! vue-mode)

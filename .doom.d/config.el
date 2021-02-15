@@ -19,7 +19,9 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 16))
+(setq doom-font (font-spec :family "Fira Code Retina" :size 16)
+      doom-variable-pitch-font (font-spec :family "Libre Baskerville")
+      doom-serif-font (font-spec :family "Libre Baskerville"))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -30,11 +32,15 @@
 ;; (setq doom-theme 'doom-horizon)
 ;; (load-theme 'night-owl t)
 
+(setq doom-themes-enable-bold t
+      doom-themes-enable-italic t)
+
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;; (setq org-directory "~/org/")
 (setq org-directory "~/Dropbox/org")
+(setq org-roam-directory "~/Dropbox/org")
 
 ;; Set org agenda dir path to try to include all files in the directory
 (setq org-agenda-files `("~/Dropbox/org"))
@@ -110,9 +116,6 @@
   (setq lsp-log-io t)
   )
 
-;; (use-package jupyter)
-;; (use-package ob-jupyter)
-
 (org-babel-do-load-languages
  `org-babel-load-languages
  `((emacs-lisp . t)
@@ -123,11 +126,4 @@
 
 (require 'ox-ipynb)
 
-;; Center org buffers
-(defun efs/org-mode-visual-fill ()
-  (setq visual-fill-column-width 100
-        visual-fill-column-center-text t)
-  (visual-fill-column-mode 1))
-
-(use-package visual-fill-column
-  :hook (org-mode . efs/org-mode-visual-fill))
+(add-hook 'vue-mode-hook #'lsp!)
