@@ -1,4 +1,4 @@
-" See https://neovim.io/doc/user/usr_05.html
+
 
 set autoindent
 set history=50
@@ -19,6 +19,9 @@ filetype plugin indent on
 
 set relativenumber
 set number
+
+" Use the system clipboard
+set clipboard=unnamed
 
 " from primeagen
 set termguicolors
