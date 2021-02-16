@@ -63,6 +63,7 @@ Plug 'junegunn/goyo.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'haishanh/night-owl.vim'
 Plug 'itchyny/lightline.vim'
@@ -108,6 +109,9 @@ nnoremap <leader>grn :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>gh :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>gca :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>gsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
+
+
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 " function to set linebreak/wrap on initiatializing Goyo
 function! s:goyo_enter()
