@@ -45,9 +45,16 @@
 ;; Set org agenda dir path to try to include all files in the directory
 (setq org-agenda-files `("~/Dropbox/org"))
 
-;; Enforce handling all child tasks before you can mark a parent done in org
-(setq org-enforce-todo-dependencies t)
-(setq org-enforce-todo-checkbox-dependencies t)
+
+;; Set states for ORG todos
+(after! org
+  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "|" "DONE(d)")
+                            (sequence "EMAIL(e)" "|" "SENT(s)")
+                            (sequence "|" "CANCELLED(c@/!)")
+                            (sequence "|" "MOVED(m)")))
+
+  (setq org-enforce-todo-dependencies t) ;; Enforce handling all child tasks before you can mark a parent done in org
+  (setq org-enforce-todo-checkbox-dependencies t))
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
