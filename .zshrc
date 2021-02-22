@@ -53,7 +53,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm brew z zsh-autosuggestions bundler python pip vi-mode)
+plugins=(git npm brew z zsh-autosuggestions bundler python pip vi-mode deno)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -139,3 +139,5 @@ export PATH=/usr/local/opt/emacs-plus@27/bin:$PATH
 source /Users/csbaile3/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
