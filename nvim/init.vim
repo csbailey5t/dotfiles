@@ -23,6 +23,10 @@ set number
 " Use the system clipboard
 set clipboard=unnamed
 
+" Always split down and right
+set splitright
+set splitbelow
+
 " from primeagen
 set termguicolors
 set colorcolumn=80
@@ -52,6 +56,13 @@ let mapleader = " "
 " bind file save/update
 nnoremap <leader>fs :update<cr>
 
+" window movement
+nnoremap <leader>wj <C-W>j
+nnoremap <leader>wk <C-W>k
+nnoremap <leader>wl <C-W>l
+nnoremap <leader>wh <C-W>h
+
+
 
 " define plugins for vim-plug
 call plug#begin('~/.vim/plugged')
@@ -66,6 +77,7 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'haishanh/night-owl.vim'
+Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -73,11 +85,15 @@ Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
 call plug#end()
 
-colorscheme night-owl
+" colorscheme night-owl
+colorscheme embark
+
+" enable italics in embark
+let g:embark_terminal_italics = 1
 
 " enable lightline theme with nightowl
 let g:lightline = {
-      \ 'colorscheme': 'nightowl',
+      \ 'colorscheme': 'embark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -108,6 +124,7 @@ nnoremap <leader>grr :lua vim.lsp.buf.references()<CR>
 nnoremap <leader>grn :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>gh :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>gca :lua vim.lsp.buf.code_action()<CR>
+nnoremap <leader>ff :lua vim.lsp.buf.formatting()<CR>
 nnoremap <leader>gsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
 
 
