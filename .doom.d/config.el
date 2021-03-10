@@ -116,12 +116,12 @@
 
 (use-package lsp-ui)
 
-(use-package lsp-haskell
-  :config
-  (setq lsp-haskell-process-path-hie "haskell-language-server-wrapper")
-  ;; comment/uncomment below to see lsp client/server interactions
-  (setq lsp-log-io t)
-  )
+;; (use-package lsp-haskell
+;;   :config
+;;   (setq lsp-haskell-process-path-hie "haskell-language-server-wrapper")
+;;   ;; comment/uncomment below to see lsp client/server interactions
+;;   (setq lsp-log-io t)
+;;   )
 
 (org-babel-do-load-languages
  `org-babel-load-languages
@@ -134,3 +134,10 @@
 (require 'ox-ipynb)
 
 (add-hook 'vue-mode-hook #'lsp!)
+
+;; config for tree-sitter
+(use-package! tree-sitter
+  :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
