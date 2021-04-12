@@ -1,5 +1,4 @@
 
-
 set autoindent
 set history=50
 set ruler
@@ -26,6 +25,9 @@ set clipboard=unnamed
 " Always split down and right
 set splitright
 set splitbelow
+
+" for gui neovim
+set guifont=Fira\ Code:h16
 
 " from primeagen
 set termguicolors
@@ -62,19 +64,26 @@ nnoremap <leader>wk <C-W>k
 nnoremap <leader>wl <C-W>l
 nnoremap <leader>wh <C-W>h
 
+" make it easier to get out terminal mode
+tnoremap <Esc> <C-\><C-n>
+
 
 
 " define plugins for vim-plug
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'hrsh7th/nvim-compe'
 
 Plug 'haishanh/night-owl.vim'
 Plug 'embark-theme/vim', { 'as': 'embark' }
@@ -104,18 +113,51 @@ let g:lightline = {
       \ }
 
 
-let g:completion_matching_stategy_list = ['exact', 'substring', 'fuzzy']
-lua require'lspconfig'.pyls.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.hls.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.svelte.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.elmls.setup{ on_attach=require'completion'.on_attach }
-lua require'lspconfig'.denols.setup{ on_attach=require'completion'.on_attach }
+" let g:completion_matching_stategy_list = ['exact', 'substring', 'fuzzy']
+" lua require'lspconfig'.pyls.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.hls.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.svelte.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.elmls.setup{ on_attach=require'completion'.on_attach }
+" lua require'lspconfig'.denols.setup{ on_attach=require'completion'.on_attach }
 
-" config from nvim-lua/completion
-set completeopt=menuone,noinsert,noselect
+lua require'lspconfig'.pyls.setup{} 
+lua require'lspconfig'.tsserver.setup{} 
+
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:false
+let g:compe.source.treesitter = v:true
+
+" config for completion
+set completeopt=menuone,noselect
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" mappings from nvim-compe
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 nnoremap <leader>gd :lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>gi :lua vim.lsp.buf.implementation()<CR>
@@ -124,8 +166,14 @@ nnoremap <leader>grr :lua vim.lsp.buf.references()<CR>
 nnoremap <leader>grn :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>gh :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>gca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <leader>ff :lua vim.lsp.buf.formatting()<CR>
+nnoremap <leader>fo :lua vim.lsp.buf.formatting()<CR>
 nnoremap <leader>gsd :lua vim.lsp.util.show_line_diagnostics(); vim.lsp.util.show_line_diagnostics()<CR>
+
+" telescope config
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
