@@ -29,6 +29,9 @@ set splitbelow
 " for gui neovim
 set guifont=Fira\ Code:h16
 
+" settings for neovide
+let g:neovide_cursor_vfx_mode = "railgun"
+
 " from primeagen
 set termguicolors
 set colorcolumn=80
@@ -42,7 +45,6 @@ set undofile
 
 " give more space for displaying messages
 set cmdheight=2
-
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -67,50 +69,45 @@ nnoremap <leader>wh <C-W>h
 " make it easier to get out terminal mode
 tnoremap <Esc> <C-\><C-n>
 
-
-
 " define plugins for vim-plug
 call plug#begin('~/.vim/plugged')
 
 " Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+
+" Telescope and dependencies
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 " Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'hrsh7th/nvim-compe'
 
-Plug 'haishanh/night-owl.vim'
-Plug 'embark-theme/vim', { 'as': 'embark' }
-Plug 'itchyny/lightline.vim'
+" Plug 'haishanh/night-owl.vim'
+" Plug 'embark-theme/vim', { 'as': 'embark' }
+Plug 'folke/tokyonight.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
+
+Plug 'hoob3rt/lualine.nvim'
+
+Plug 'kyazdani42/nvim-web-devicons' 
+Plug 'kyazdani42/nvim-tree.lua'
 call plug#end()
 
 " colorscheme night-owl
-colorscheme embark
+colorscheme tokyonight
 
 " enable italics in embark
-let g:embark_terminal_italics = 1
+" let g:embark_terminal_italics = 1
 
-" enable lightline theme with nightowl
-let g:lightline = {
-      \ 'colorscheme': 'embark',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
+
+lua require'lualine'.setup{	options = { theme = 'tokyonight' } }
 
 
 " let g:completion_matching_stategy_list = ['exact', 'substring', 'fuzzy']
@@ -175,7 +172,6 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 " function to set linebreak/wrap on initiatializing Goyo
@@ -186,3 +182,16 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 
+" keymaps and settings for nvim-tree
+" https://github.com/kyazdani42/nvim-tree.lua
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ }
+
+highlight NvimTreeFolderIcon guibg=blue
