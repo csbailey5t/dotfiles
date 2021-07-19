@@ -59,8 +59,8 @@
 (package! lsp-ui)
 
 ;; install ox-ipynb to export org files to ipynb
-(package! ox-ipynb :recipe
-  (:host github :repo "jkitchin/ox-ipynb"))
+;; (package! ox-ipynb :recipe
+;;   (:host github :repo "jkitchin/ox-ipynb"))
 
 ;; install night owl theme
 (package! night-owl-theme)
@@ -77,3 +77,7 @@
 ;; add treesitter until Doom adds it
 (package! tree-sitter)
 (package! tree-sitter-langs)
+
+;; Add Rougier's nano-theme from nano-emacs
+(package! nano-theme :recipe
+  (:host github :repo "rougier/nano-theme"))
