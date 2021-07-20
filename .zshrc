@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/csbaile3/.oh-my-zsh
+export ZSH=/Users/scott/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -94,11 +94,8 @@ alias rm="rm -i"
 # alias nvim to vim
 alias vim="nvim"
 
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /Users/csbaile3/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Add rbenv to path
-export PATH="$HOME/.rbenv/shims:$PATH"
+# export PATH="$HOME/.rbenv/shims:$PATH"
 
 # Add alias for thefuck to fix commands
 eval $(thefuck --alias)
@@ -110,19 +107,19 @@ eval "$(pyenv init -)"
 # . /Users/csb5t/anaconda3/etc/profile.d/conda.sh
 # export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
-export PATH="/Users/csbaile3/.local/bin:$PATH"
+export PATH="/Users/scott/.local/bin:$PATH"
 
 export PATH="~/.ghcup/bin:$PATH"
 
 # opam configuration
-test -r /Users/csbaile3/.opam/opam-init/init.zsh && . /Users/csbaile3/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# test -r /Users/scott/.opam/opam-init/init.zsh && . /Users/scott/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # NVM config
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 #RBENV
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # Add Doom emacs to PATH
 
@@ -132,12 +129,12 @@ export PATH=~/.emacs.d/bin:$PATH
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # initialize starship prompt
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 
-export PATH=/usr/local/opt/emacs-plus@27/bin:$PATH
+export PATH=/usr/local/opt/emacs-plus@28/bin:$PATH
 
-source /Users/csbaile3/.config/broot/launcher/bash/br
+# source /Users/scott/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
