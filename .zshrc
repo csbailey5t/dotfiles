@@ -53,7 +53,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm brew z zsh-autosuggestions bundler python pip vi-mode deno)
+plugins=(git npm brew z zsh-autosuggestions bundler python pip vi-mode deno pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,7 +95,8 @@ alias rm="rm -i"
 alias vim="nvim"
 
 # Add rbenv to path
-# export PATH="$HOME/.rbenv/shims:$PATH"
+eval "$(rbenv init -)"
+
 
 # Add alias for thefuck to fix commands
 eval $(thefuck --alias)
@@ -138,3 +139,6 @@ export PATH=/usr/local/opt/emacs-plus@28/bin:$PATH
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# opam configuration
+test -r /Users/scott/.opam/opam-init/init.zsh && . /Users/scott/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
