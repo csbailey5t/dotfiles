@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code Retina" :size 16)
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 16)
       doom-variable-pitch-font (font-spec :family "Libre Baskerville")
       doom-serif-font (font-spec :family "Libre Baskerville"))
 
@@ -40,7 +40,7 @@
 ;; change `org-directory'. It must be set before org loads!
 ;; (setq org-directory "~/org/")
 (setq org-directory "~/Dropbox/org")
-(setq org-roam-directory "~/Dropbox/org")
+;; (setq org-roam-directory "~/Dropbox/org")
 
 ;; Set org agenda dir path to try to include all files in the directory
 (setq org-agenda-files `("~/Dropbox/org"))
@@ -112,7 +112,7 @@
 ;;                                    :deadline past)))
 ;;   (org-super-agenda-mode))
 
-(require 'svelte-mode)
+;; (require 'svelte-mode)
 
 (use-package lsp-ui)
 
@@ -131,13 +131,13 @@
    (jupyter . t)))
 
 
-(require 'ox-ipynb)
+;; (require 'ox-ipynb)
 
-(add-hook 'vue-mode-hook #'lsp!)
+;; (add-hook 'vue-mode-hook #'lsp!)
 
 ;; config for tree-sitter
-(use-package! tree-sitter
-  :config
-  (require 'tree-sitter-langs)
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+;; (use-package! tree-sitter
+;;   :config
+;;   (require 'tree-sitter-langs)
+;;   (global-tree-sitter-mode)
+;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
