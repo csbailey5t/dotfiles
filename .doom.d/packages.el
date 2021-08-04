@@ -47,13 +47,13 @@
 ;(package! builtin-package :recipe (:branch "develop"))
 
 ;;install org-super-agenda
-(package! org-super-agenda)
+;; (package! org-super-agenda)
 
 ;;install reason mode
-(package! reason-mode)
+;; (package! reason-mode)
 
 ;;install svelte major mode
-(package! svelte-mode)
+;; (package! svelte-mode)
 
 ;; install lsp-ui
 (package! lsp-ui)
@@ -72,11 +72,11 @@
 (package! ripgrep)
 
 ;; add vue mode
-(package! vue-mode)
+;; (package! vue-mode)
 
 ;; add treesitter until Doom adds it
-(package! tree-sitter)
-(package! tree-sitter-langs)
+;; (package! tree-sitter)
+;; (package! tree-sitter-langs)
 
 ;; Add Rougier's nano-theme from nano-emacs
 (package! nano-theme :recipe
