@@ -18,7 +18,6 @@ vim.api.nvim_exec(
 local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
-  use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
   use 'ludovicchabant/vim-gutentags' -- Automatic tags management
@@ -45,6 +44,9 @@ require('packer').startup(function()
 
   -- orgmode
   use {'kristijanhusak/orgmode.nvim'}
+
+  -- magit clone
+  use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
 
 end)
 
@@ -338,3 +340,6 @@ cmp.setup {
 require('orgmode').setup({
 	org_agenda_files = {'~/Dropbox/org/*'}
 })
+
+local neogit = require('neogit')
+neogit.setup {}
