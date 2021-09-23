@@ -48,6 +48,10 @@ require('packer').startup(function()
   -- magit clone
   use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
 
+  -- markdown preview
+  use {'ellisonleao/glow.nvim'}
+  use {'iamcco/markdown-preview.nvim', run = [[sh -c 'cd app && yarn install']]}
+
 end)
 
 --Incremental live completion (note: this is now a default on master)
