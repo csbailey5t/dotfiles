@@ -95,7 +95,7 @@ alias rm="rm -i"
 alias vim="nvim"
 
 # Add rbenv to path
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 
 # Add alias for thefuck to fix commands
@@ -142,3 +142,7 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # opam configuration
 test -r /Users/scott/.opam/opam-init/init.zsh && . /Users/scott/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+alias ls="exa -la --icons"
+
+[ -f "/Users/scott/.ghcup/env" ] && source "/Users/scott/.ghcup/env" # ghcup-env[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
