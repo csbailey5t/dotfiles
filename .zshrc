@@ -144,3 +144,8 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # test -r /Users/scott/.opam/opam-init/init.zsh && . /Users/scott/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+alias ls="exa -la --icons"
+
+[ -f "/Users/scott/.ghcup/env" ] && source "/Users/scott/.ghcup/env" # ghcup-env
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
