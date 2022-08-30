@@ -74,10 +74,25 @@
 ;; add vue mode
 ;; (package! vue-mode)
 
-;; add treesitter until Doom adds it
-;; (package! tree-sitter)
-;; (package! tree-sitter-langs)
-
 ;; Add Rougier's nano-theme from nano-emacs
 (package! nano-theme :recipe
   (:host github :repo "rougier/nano-theme"))
+
+(package! org-modern)
+
+(package! mindre-theme)
+
+;; (package! lsp-grammarly :recipe
+;;   (:host github :repo "emacs-grammarly/lsp-grammarly"))
+
+(package! prism)
+
+(package! imenu-list)
+(package! org-imenu :recipe
+  (:host github :repo "rougier/org-imenu"))
+
+(package! pdf-drop-mode :recipe
+  (:host github :repo "rougier/pdf-drop-mode"))
+
+(package! org-bib-mode :recipe
+  (:host github :repo "rougier/org-bib-mode" :files ("org-bib.el")))

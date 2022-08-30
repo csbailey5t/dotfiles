@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 16)
+(setq doom-font (font-spec :family "Dank Mono" :size 16)
       doom-variable-pitch-font (font-spec :family "Libre Baskerville")
       doom-serif-font (font-spec :family "Libre Baskerville"))
 
@@ -28,9 +28,9 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-nord)
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-material)
 ;; (setq doom-theme 'doom-horizon)
 ;; (load-theme 'night-owl t)
+(load-theme 'mindre t)
 
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
@@ -40,7 +40,8 @@
 ;; change `org-directory'. It must be set before org loads!
 ;; (setq org-directory "~/org/")
 (setq org-directory "~/Dropbox/org")
-;; (setq org-roam-directory "~/Dropbox/org")
+(setq org-roam-directory "~/Dropbox/org/pages")
+(setq org-roam-dailies-directory "~/Dropbox/org/journals")
 
 ;; Set org agenda dir path to try to include all files in the directory
 (setq org-agenda-files `("~/Dropbox/org"))
@@ -86,15 +87,15 @@
 (setq-default
  window-combination-resize t ;; take window space from all windows
  x-stretch-cursor t ;; stretch cursor to glyph width
- delete-trailing-lines t
- )
+ delete-trailing-lines t)
+ 
 
 (setq undo-limit 80000000 ;; raise undo limit to 80mb
       evil-want-fine-undo t ;; more fine-grained undo in insert mode
       auto-save-default t
       inhibit-compacting-font-caches t ;; cache glyphs
-      truncate-string-ellipsis "…"
-      )
+      truncate-string-ellipsis "…")
+      
 
 ;; Define where to find projects files
 (setq projectile-project-search-path '("~/projects/"))
@@ -135,9 +136,30 @@
 
 ;; (add-hook 'vue-mode-hook #'lsp!)
 
-;; config for tree-sitter
-;; (use-package! tree-sitter
-;;   :config
-;;   (require 'tree-sitter-langs)
-;;   (global-tree-sitter-mode)
-;;   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+(setq org-auto-align-tags nil
+ org-tags-column 0
+ org-catch-invisible-edits 'show-and-error
+ org-special-ctrl-a/e t
+ org-insert-heading-respect-content t
+
+;; Org styling, hide markup etc.
+ org-hide-emphasis-markers t
+ org-pretty-entities t
+ org-ellipsis "…")
+
+;; ;; Agenda styling
+;; org-agenda-tags-column 0
+;; org-agenda-block-separator ?─
+;; org-agenda-time-grid
+;; '((daily today require-timed)
+;;    (800 1000 1200 1400 1600 1800 2000)
+;; " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
+;; org-agenda-current-time-string
+;; "⭠ now ─────────────────────────────────────────────────")
+
+(global-org-modern-mode)
+
+(setq mindre-use-more-bold t
+ mindre-use-faded-lisp-parens t)
+
+(setq! lsp-rust-server 'rust-analyzer)
