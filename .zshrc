@@ -53,7 +53,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm brew z zsh-autosuggestions bundler python pip vi-mode deno asdf)
+plugins=(git npm brew zsh-z zsh-autosuggestions bundler python pip vi-mode deno asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -147,5 +147,9 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 alias ls="exa -la --icons"
 
-[ -f "/Users/scott/.ghcup/env" ] && source "/Users/scott/.ghcup/env" # ghcup-env
+#[ -f "/Users/scott/.ghcup/env" ] && source "/Users/scott/.ghcup/env" # ghcup-env
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+[ -f "/Users/scott/.ghcup/env" ] && source "/Users/scott/.ghcup/env" # ghcup-env
+
+alias tidy="/opt/homebrew/Cellar/tidy-html5/5.8.0/bin/tidy"
