@@ -123,8 +123,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # eval "$(rbenv init -)"
 
 # Add Doom emacs to PATH
-
-export PATH=~/.emacs.d/bin:$PATH
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # add poetry to path 
 export PATH="$HOME/.poetry/bin:$PATH"
