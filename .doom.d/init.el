@@ -62,7 +62,7 @@
        ;;lispy             ; vim for lisp, for people who don't like vim
        ;;multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
-       parinfer          ; turn lisp into python, sort of
+       ;; parinfer          ; turn lisp into python, sort of
        ;;rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
        word-wrap         ; soft wrapping with language-aware indent
@@ -109,8 +109,8 @@
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
-        (:if IS-MAC macos)             ; improve compatibility with macOS
-        tty                         ; improve the terminal Emacs experience
+       (:if IS-MAC macos)             ; improve compatibility with macOS
+       tty                         ; improve the terminal Emacs experience
       
        :lang
        ;;agda              ; types of types of types of types...
@@ -122,7 +122,8 @@
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
-       ;;elixir            ; erlang done right
+       ;; (elixir +lsp
+       ;;         +tree-sitter)           ; erlang done right
        ;; (elm +lsp)               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
@@ -148,7 +149,7 @@
        (markdown +grip)         ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
-       ocaml             ; an objective camel
+       ;; ocaml             ; an objective camel
        (org +dragndrop
             +pandoc
             +pretty
@@ -164,7 +165,7 @@
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
 ;;        (ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       (rust +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       ;; (rust +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        (scheme +guile)            ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor

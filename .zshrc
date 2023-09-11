@@ -144,7 +144,7 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
-alias ls="exa -la --icons"
+alias ls="eza -la --icons"
 
 #[ -f "/Users/scott/.ghcup/env" ] && source "/Users/scott/.ghcup/env" # ghcup-env
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
@@ -152,3 +152,8 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 [ -f "/Users/scott/.ghcup/env" ] && source "/Users/scott/.ghcup/env" # ghcup-env
 
 alias tidy="/opt/homebrew/Cellar/tidy-html5/5.8.0/bin/tidy"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+export PATH=$PATH:/Users/scott/.pixi/bin

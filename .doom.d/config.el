@@ -29,8 +29,8 @@
 ;; (setq doom-theme 'doom-nord)
 ;; (setq doom-theme 'doom-dracula)
 ;; (setq doom-theme 'doom-horizon)
-;; (load-theme 'night-owl t)
-(load-theme 'mindre t)
+(load-theme 'night-owl t)
+;; (load-theme 'mindre t)
 
 (setq doom-themes-enable-bold t
       doom-themes-enable-italic t)
@@ -162,4 +162,11 @@
 (setq mindre-use-more-bold t
  mindre-use-faded-lisp-parens t)
 
-(setq! lsp-rust-server 'rust-analyzer)
+;; (setq! lsp-rust-server 'rust-analyzer)
+
+(setq citar-bibliography '("~/Dropbox/bibliography.bib"))
+(setq citar-symbols
+      `((file ,(all-the-icons-faicon "file-o" :face 'all-the-icons-green :v-adjust -0.1) . " ")
+        (note ,(all-the-icons-material "speaker_notes" :face 'all-the-icons-blue :v-adjust -0.3) . " ")
+        (link ,(all-the-icons-octicon "link" :face 'all-the-icons-orange :v-adjust 0.01) . " ")))
+(setq citar-symbol-separator "  ")
