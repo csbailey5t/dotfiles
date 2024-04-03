@@ -20,8 +20,8 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
-  use 'ludovicchabant/vim-gutentags' -- Automatic tags management
- -- UI to select things (files, grep results, open buffers...)
+
+  -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use 'joshdick/onedark.vim' -- Theme inspired by Atom
   use 'itchyny/lightline.vim' -- Fancier statusline
@@ -41,16 +41,22 @@ require('packer').startup(function()
 
   -- theme
   use 'folke/tokyonight.nvim'
+  use {'shaunsingh/oxocarbon.nvim', run = 
+  './install.sh'}
 
   -- orgmode
-  use {'kristijanhusak/orgmode.nvim'}
+  use {'nvim-orgmode/orgmode',
+  	ft = {'org'},
+	config = function()
+		require('orgmode').setup{}
+	end
+}
 
   -- magit clone
   use {'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim'}
 
   -- markdown preview
   use {'ellisonleao/glow.nvim'}
-  use {'iamcco/markdown-preview.nvim', run = [[sh -c 'cd app && yarn install']]}
 
 end)
 
@@ -88,7 +94,7 @@ vim.o.termguicolors = true
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_dark_sidebar = true
 vim.g.dark_float = true
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme oxocarbon]]
 
 --Set statusbar
 vim.g.lightline = {
@@ -100,7 +106,7 @@ vim.g.lightline = {
 --Remap space as leader key
 vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = 'm'
 
 --Remap for dealing with word wrap
 vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
@@ -160,11 +166,15 @@ vim.api.nvim_set_keymap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
 
+-- Load custom tree-sitter grammar for org
+require('orgmode').setup_ts_grammar()
+
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
 require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true, -- false will disable the whole extension
+    additional_vim_regex_highlighting = {'org'},
   },
   incremental_selection = {
     enable = true,
@@ -337,7 +347,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-		{ name = 'orgmode' },
+    { name = 'orgmode' },
   },
 }
 
