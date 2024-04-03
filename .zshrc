@@ -131,7 +131,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # initialize starship prompt
 eval "$(starship init zsh)"
 
-export PATH=/usr/local/opt/emacs-plus@28/bin:$PATH
+export PATH=/opt/homebrew/opt/emacs-plus@29/bin:$PATH
 
 # source /Users/scott/.config/broot/launcher/bash/br
 
@@ -152,8 +152,4 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 [ -f "/Users/scott/.ghcup/env" ] && source "/Users/scott/.ghcup/env" # ghcup-env
 
 alias tidy="/opt/homebrew/Cellar/tidy-html5/5.8.0/bin/tidy"
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-export PATH=$PATH:/Users/scott/.pixi/bin
+eval "$(pixi completion --shell zsh)"
