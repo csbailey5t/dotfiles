@@ -15,8 +15,11 @@ mattmc3/zephyr path:plugins/macos
 mattmc3/zephyr path:plugins/utility
 # mattmc3/zephyr path:plugins/zfunctions
 
+# Oh my zsh plugins
+ohmyzsh/ohmyzsh path:plugins/git
 
-# Other plugins
+
+# Final plugins
 zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
