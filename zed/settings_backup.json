@@ -7,17 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
-  "edit_predictions": {
+  "inline_completions": {
     "disabled_globs": [".env", "event-migration-guide/todos.md"]
   },
   "features": {
-    "edit_prediction_provider": "supermaven"
+    "inline_completion_provider": "supermaven"
   },
-  "agent": {
+  "assistant": {
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-3-5-sonnet-20240620"
     },
+    "version": "2"
   },
   "vim_mode": true,
   "ui_font_size": 16,
@@ -29,7 +30,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Night Owl Dark"
+    "dark": "Ayu Mirage"
   },
   "soft_wrap": "preferred_line_length",
   "terminal": {
