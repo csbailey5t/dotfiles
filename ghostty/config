@@ -1,0 +1,14 @@
+font-family = Dank Mono
+font-size = 16
+font-thicken = true
+theme = light:rose-pine-dawn,dark:rose-pine
+macos-titlebar-style = tabs
+window-padding-x = 8
+window-padding-y = 4
+window-save-state = always
+cursor-click-to-move = true
+shell-integration = detect
+clipboard-trim-trailing-spaces = true
+mouse-hide-while-typing = true
+adjust-cell-height = 1
+scrollback-limit = 10000
