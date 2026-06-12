@@ -6,9 +6,13 @@ alias bup="brew update && brew upgrade"
 # claude update: upgrade Claude Code + ensure its native binary is installed.
 # The binary is a large optional npm dep that can silently fail to download,
 # so we install the matching platform package explicitly and rewire the launcher.
+# We also clear stale npm staging dirs from a prior failed install, which would
+# otherwise make the in-place upgrade fail with ENOTEMPTY on rename.
 cup() {
+  local scope="$(npm root -g)/@anthropic-ai"
+  rm -rf "$scope"/.claude-code-*(N)
   npm install -g @anthropic-ai/claude-code@latest || return
-  local pkg="$(npm root -g)/@anthropic-ai/claude-code"
+  local pkg="$scope/claude-code"
   local ver="$(node -p "require('$pkg/package.json').version")"
   local arch; case "$(uname -m)" in arm64|aarch64) arch=arm64 ;; *) arch=x64 ;; esac
   npm install -g "@anthropic-ai/claude-code-darwin-${arch}@${ver}" || return
