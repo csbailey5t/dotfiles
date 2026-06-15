@@ -49,7 +49,7 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # Rust cargo
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 source <(fzf --zsh)
 
