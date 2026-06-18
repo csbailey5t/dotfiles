@@ -1,13 +1,9 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
-;; To install a package:
-;;
-;;   1. Declare them here in a `package!' statement,
-;;   2. Run 'doom sync' in the shell,
-;;   3. Restart Emacs.
-;;
-;; Use 'C-h f package\!' to look up documentation for the `package!' macro.
+;; To install a package with Doom you must declare them here and run 'doom sync'
+;; on the command line, then restart Emacs for the changes to take effect -- or
+;; use 'M-x doom/reload'.
 
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
@@ -52,3 +48,25 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+
+
+;; install night owl theme from my own fork
+(package! night-owl-theme :recipe
+  (:host github :repo "csbailey5t/night-owl-emacs"))
+
+;; Add Rougier's nano-theme from nano-emacs
+(package! nano-theme :recipe
+  (:host github :repo "rougier/nano-theme"))
+
+(package! org-modern)
+
+(package! mindre-theme)
+
+(package! prism)
+
+(package! jinx)
+
+;; gleam-ts-mode is on MELPA now; the old local clone at ~/projects/gleam-mode
+;; is gone. (use-package belongs in config.el, not packages.el.)
+(package! gleam-ts-mode)
