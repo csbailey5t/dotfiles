@@ -166,6 +166,60 @@
   :config
   (require 'lsp-marksman))
 
+;; Give markdown headers real visual hierarchy. Every header level otherwise
+;; looks like bold body text: nano makes H1-H6 all inherit `nano-strong', and
+;; markdown-ts-mode tags every heading with a single `font-lock-keyword-face'.
+;; We define six per-level faces (colors inherit nano-salient/nano-strong so
+;; light and dark nano variants adapt automatically) and wire them into BOTH
+;; markdown modes.
+
+(defface sb-md-h1 '((t :inherit (nano-salient nano-strong) :height 1.5))
+  "Markdown level-1 heading.")
+(defface sb-md-h2 '((t :inherit (nano-salient nano-strong) :height 1.3))
+  "Markdown level-2 heading.")
+(defface sb-md-h3 '((t :inherit nano-strong :height 1.15))
+  "Markdown level-3 heading.")
+(defface sb-md-h4 '((t :inherit nano-strong :height 1.05))
+  "Markdown level-4 heading.")
+(defface sb-md-h5 '((t :inherit nano-strong))
+  "Markdown level-5 heading.")
+(defface sb-md-h6 '((t :inherit nano-faded))
+  "Markdown level-6 heading.")
+
+;; Classic markdown-mode (used when the +tree-sitter flag is off).
+(custom-set-faces!
+  '(markdown-header-face-1 :inherit sb-md-h1)
+  '(markdown-header-face-2 :inherit sb-md-h2)
+  '(markdown-header-face-3 :inherit sb-md-h3)
+  '(markdown-header-face-4 :inherit sb-md-h4)
+  '(markdown-header-face-5 :inherit sb-md-h5)
+  '(markdown-header-face-6 :inherit sb-md-h6))
+
+;; markdown-ts-mode (tree-sitter) ships no per-level heading faces, so add a
+;; `heading' font-lock feature that fontifies each ATX level from the grammar's
+;; atx_hN_marker nodes. NB: tree-sitter capture names disallow "/", so the face
+;; symbols use hyphens only.
+(after! markdown-ts-mode
+  (defun sb/markdown-ts-heading-fontify ()
+    "Add per-level ATX heading fontification to `markdown-ts-mode'."
+    (setq-local treesit-font-lock-settings
+                (append treesit-font-lock-settings
+                        (treesit-font-lock-rules
+                         :language 'markdown
+                         :feature 'heading
+                         :override t
+                         '([((atx_heading (atx_h1_marker)) @sb-md-h1)
+                            ((atx_heading (atx_h2_marker)) @sb-md-h2)
+                            ((atx_heading (atx_h3_marker)) @sb-md-h3)
+                            ((atx_heading (atx_h4_marker)) @sb-md-h4)
+                            ((atx_heading (atx_h5_marker)) @sb-md-h5)
+                            ((atx_heading (atx_h6_marker)) @sb-md-h6)]))))
+    (setq-local treesit-font-lock-feature-list
+                (append treesit-font-lock-feature-list '((heading))))
+    (treesit-font-lock-recompute-features)
+    (when font-lock-mode (font-lock-flush)))
+  (add-hook 'markdown-ts-mode-hook #'sb/markdown-ts-heading-fontify))
+
 ;; config for jinx spell checker
 (use-package! jinx
   :hook (emacs-startup . global-jinx-mode)
